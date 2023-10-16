@@ -105,8 +105,19 @@ while(true) {
 	}
 }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+     public void setEmailAddress(String emailAddress, Scanner scanner) {
+       while(true) {
+    	   try {
+    		   if(emailAddress.split("@")[0].equals(emailAddress)||emailAddress.split(".")[0].equals(emailAddress))throw new RuntimeErrorException(null);
+    		   else {
+    			   this.emailAddress=emailAddress;
+    			   break;
+    		   }
+    	   }catch(RuntimeErrorException e) {
+    		   System.out.print("Please enter a valid email");
+    		   emailAddress=scanner.nextLine();
+    	   }
+       }
     }
 
     public void setAddress(String address) {
