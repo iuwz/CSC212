@@ -82,28 +82,26 @@ public class Contact implements Comparable<Contact> {
         this.name = name;
     }
 
-    public void setPhoneNumber(String phoneNumber, Scanner scanner) {
-while(true) {
-	try {
-		int checkIfNum = Integer.parseInt(phoneNumber);// this variable is only used to throw a NumberFormatException
-		if(phoneNumber.length()!=10)
-			throw new RuntimeErrorException(null);
-		else {
-			this.phoneNumber= phoneNumber;
-			break;
-	}
-}catch(NumberFormatException e) {
-	System.out.print("Please enter a valid 10 digit phone number:");
-	phoneNumber=scanner.nextLine();
-	
-}catch(RuntimeErrorException e){
-	System.out.print("Please enter a valid 10 digit phone number:");
-	phoneNumber=scanner.nextLine();
-}
-	
+   public void setPhoneNumber(String phoneNumber, Scanner scanner) {
+        while (true) {
+            try {
+                long checkIfNum = Long.parseLong(phoneNumber); // using long here
+                if (phoneNumber.length() != 10)
+                    throw new RuntimeErrorException(null);
+                else {
+                    this.phoneNumber = phoneNumber;
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.print("Please enter a valid 10-digit phone number: ");
+                phoneNumber = scanner.nextLine();
+            } catch (RuntimeErrorException e) {
+                System.out.print("Phone number must be exactly 10 digits. Try again: ");
+                phoneNumber = scanner.nextLine();
+            }
+        }
+    }
 
-	}
-}
 
      public void setEmailAddress(String emailAddress, Scanner scanner) {
         while (true) {
