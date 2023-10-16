@@ -106,18 +106,20 @@ while(true) {
 }
 
      public void setEmailAddress(String emailAddress, Scanner scanner) {
-       while(true) {
-    	   try {
-    		   if(emailAddress.split("@")[0].equals(emailAddress)||emailAddress.split(".")[0].equals(emailAddress))throw new RuntimeErrorException(null);
-    		   else {
-    			   this.emailAddress=emailAddress;
-    			   break;
-    		   }
-    	   }catch(RuntimeErrorException e) {
-    		   System.out.print("Please enter a valid email");
-    		   emailAddress=scanner.nextLine();
-    	   }
-       }
+        while (true) {
+            // Splitting the string by '@' and by '.' and checking the resulting arrays' lengths.
+            String[] atSplit = emailAddress.split("@");
+            String[] dotSplit = emailAddress.split("\\.");
+
+            // Checking if email contains '@' and '.' but not at the beginning or end because if the @ or . is in the end the last item in the array will be empty
+            if (atSplit.length == 2 && dotSplit.length >= 2 && !atSplit[atSplit.length-1].isEmpty() && !dotSplit[dotSplit.length-1].isEmpty()) {
+                this.emailAddress = emailAddress;
+                break;
+            } else {
+                System.out.print("Please enter a valid email: ");
+                emailAddress = scanner.nextLine();
+            }
+        }
     }
 
     public void setAddress(String address) {
