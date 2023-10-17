@@ -22,11 +22,11 @@ public class PhoneBook {
 
 		while (true) { //n
 			try { 
-				System.out.print("Enter your choice: "); //1
-				int choice = Integer.parseInt(scanner.nextLine()); //1
-				System.out.println(); //1
-				if (choice < 1 || choice > 8) { //1
-					System.err.println("Please enter a number between 1 and 8"); //1
+				System.out.print("Enter your choice: "); //n
+				int choice = Integer.parseInt(scanner.nextLine()); //n
+				System.out.println(); //n
+				if (choice < 1 || choice > 8) { //n
+					System.err.println("Please enter a number between 1 and 8"); //n
 				} else {
 					return choice; //1
 				}
@@ -34,6 +34,7 @@ public class PhoneBook {
 				System.err.println("Please enter a number between 1 and 8"); //1
 			}
 		}
+		//6n+11
 	}
 
 	private void addContact() {
@@ -42,29 +43,29 @@ public class PhoneBook {
 		System.out.print("Enter the contact's name: "); //1
 		contact.setName(scanner.nextLine()); //1
 		System.out.print("Enter the contact's phone number: "); //1
-		contact.setPhoneNumber(scanner.nextLine(), scanner); //1*n
+		contact.setPhoneNumber(scanner.nextLine(), scanner); //1*(6n)=6n
 		System.out.print("Enter the contact's email address: "); //1
-		contact.setEmailAddress(scanner.nextLine(), scanner); //1*6n
+		contact.setEmailAddress(scanner.nextLine(), scanner); //1*(6n)=6n
 		System.out.print("Enter the contact's address: "); //1
 		contact.setAddress(scanner.nextLine()); //1
 		System.out.print("Enter the contact's birth date (dd/MM/yyyy): "); //1
-		contact.setBirthDate(scanner.nextLine(), scanner); //1*n
+		contact.setBirthDate(scanner.nextLine(), scanner); //1*(4n+1)=4n+1
 		System.out.print("Enter any notes about the contact: "); //1
 		contact.setNotes(scanner.nextLine()); //1
 
 
 		// check if a contact with name and phone exists.
-		ContactSearchCriteria searchCriteria = new ContactSearchCriteria(contact.getName(), 1); //1 // 1 corresponds to NAME
-		ContactSearchCriteria phoneSearchCriteria = new ContactSearchCriteria(contact.getPhoneNumber(), 2); //1  // 2 corresponds to PHONE_NUMBER
+		ContactSearchCriteria searchCriteria = new ContactSearchCriteria(contact.getName(), 1); //1*(2n)=2n // 1 corresponds to NAME
+		ContactSearchCriteria phoneSearchCriteria = new ContactSearchCriteria(contact.getPhoneNumber(), 2); //1*(2n)=2n  // 2 corresponds to PHONE_NUMBER
 
-		if (this.contacts.search(searchCriteria).isEmpty() && this.contacts.search(phoneSearchCriteria).isEmpty()) { //n²
-			this.contacts.add(contact); //n
+		if (this.contacts.search(searchCriteria).isEmpty() && this.contacts.search(phoneSearchCriteria).isEmpty()) { //2(3n²+28n+4)=6n²+56n+8
+			this.contacts.add(contact); //1*(3n+14)=3n+14
 
 			System.out.println("Contact added successfully!"); //1
 		} else {
 			System.out.println("Contact with name or phone number already exists."); //1
 		}
-		System.out.println();//1		//n²+4n+14
+		System.out.println();//1		//6n²+79n+35
 	}
 
 	private void searchForContact() {
@@ -94,22 +95,22 @@ public class PhoneBook {
 		String prompt = "";
 
 		switch (choice) { //1
-		case 1:
+		case 1: //1
 			prompt = "Enter the contact's name: "; //1
 			break;
-		case 2:
+		case 2: //1
 			prompt = "Enter the contact's phone number: "; //1
 			break;
-		case 3:
+		case 3: //1
 			prompt = "Enter the contact's email: "; //1
 			break;
-		case 4:
+		case 4: //1
 			prompt = "Enter the contact's address: "; //1
 			break;
-		case 5:
+		case 5: //1
 			prompt = "Enter the contact's birthday (dd/MM/yyyy): "; //1
 			break;
-		case 6:
+		case 6: //1
 			prompt = "Enter the contact's first name: "; //1
 			break;
 		}
@@ -120,9 +121,9 @@ public class PhoneBook {
 
 
 		// Create a new search criteria based on the contact information
-		ContactSearchCriteria criteria = new ContactSearchCriteria(search, choice); //1
+		ContactSearchCriteria criteria = new ContactSearchCriteria(search, choice); //1*(2n)=2n
 
-		LinkedListADT<Contact> results = this.contacts.search(criteria); //n²
+		LinkedListADT<Contact> results = this.contacts.search(criteria); //3n²+28n+4
 
 		if (results.isEmpty()) { //1
 			System.out.println("No contact found"); //1
@@ -130,27 +131,27 @@ public class PhoneBook {
 			System.out.println("Contacts found!"); //1
 			System.out.println(results); //1*n
 		}
-		//n²+6n+21
+		//3n²+36n+31
 	}
 	
 	private void deleteEventsAssociatedWithContact(Contact contact) {
 		Node<Event> currentNode = events.getHead(); //1
-		while (currentNode != null) { //n
+		while (currentNode != null) { //n+1
 			if (currentNode.getData().getContact().equals(contact)) { //1*n
-				events.remove(currentNode.getData()); //n*n= n²
+				events.remove(currentNode.getData()); //n*(3n+9)= 4n²+9n
 			}
 			currentNode = currentNode.getNext(); //1*n
 		}
-		//n²+3n+1
+		//4n²+12n+2
 	}
 	
 	private void deleteContact() {
 		System.out.print("Enter the contact's name: "); //1
 		String name = scanner.nextLine(); //1
 
-		ContactSearchCriteria criteria = new ContactSearchCriteria(name, 1); //1
+		ContactSearchCriteria criteria = new ContactSearchCriteria(name, 1); //1*(2n)=2n
 
-		LinkedListADT<Contact> results = this.contacts.search(criteria); //1*n
+		LinkedListADT<Contact> results = this.contacts.search(criteria); //1*(3n²+28n+4)=3n²+28n+4
 
 		if (results.isEmpty()) { //1
 			System.out.println("No contact found"); //1
@@ -159,20 +160,20 @@ public class PhoneBook {
 
 			Node<Contact> node = results.getHead(); //1
 
-			while (node != null) { //n
+			while (node != null) { //n+1
 				System.out.println("Name: " + node.getData().getName()); //1*n
 				System.out.print("Are you sure you want to delete this contact? (y/n): "); //1*n
 				String choice = scanner.nextLine(); //1*n
 				if (choice.equalsIgnoreCase("y")) { //1*n
-					this.contacts.remove(node.getData()); //n*n=n²
+					this.contacts.remove(node.getData()); //n*(3n+9)=3n²+9n
 					System.out.println("Contact deleted successfully!");//1*n
-					deleteEventsAssociatedWithContact(node.getData()); //n²*n=n³
+					deleteEventsAssociatedWithContact(node.getData()); //n*(4n²+12n+2)=4n³+12n²+2n
 				}
 				node = node.getNext(); //1*n
 			}
 		}
 		System.out.println(); //1
-		//n³+n²+8n+8
+		//4n³+18n²+48n+12
 	}
 
 	private void scheduleEvent() {
