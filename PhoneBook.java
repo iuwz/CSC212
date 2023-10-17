@@ -177,45 +177,52 @@ public class PhoneBook {
 	}
 
 	private void scheduleEvent() {
-		Event event = new Event(); //1 
-		String contactName = "";
+        Event event = new Event();
+        String contactName = "";
 
-		System.out.print("Enter the event's title: "); //1
-		event.setTitle(scanner.nextLine()); //1
-		System.out.print("Enter contact's name: "); //1
-		contactName = scanner.nextLine(); //1
+        System.out.print("Enter the event's title: ");
+        event.setTitle(scanner.nextLine());
+        System.out.print("Enter contact's name: ");
+        contactName = scanner.nextLine();
+        
+        event.setDate(scanner);  // setting both start and end times
 
-		System.out.print("Enter the event's date and time (dd/MM/yyyy HH:mm): "); //1
-		 event.setDate(scanner.nextLine(), scanner, this.events); //n²
-		System.out.print("Enter the event's location: "); //1
-		event.setLocation(scanner.nextLine()); //1
+        System.out.print("Enter the event's location: ");
+        event.setLocation(scanner.nextLine());
 
-		ContactSearchCriteria criteria = new ContactSearchCriteria(contactName, 1); //1 
-		LinkedListADT<Contact> results = this.contacts.search(criteria); //n²
+        ContactSearchCriteria criteria = new ContactSearchCriteria(contactName, 1);
+        LinkedListADT<Contact> results = this.contacts.search(criteria);
 
+        if (results.isEmpty()) {
+            System.out.println("No contact found");
+        } else if (results.size() > 1) {
+            System.out.println("Multiple contacts found");
+        } else {
+            Node<Contact> node = results.getHead();
 
-		if (results.isEmpty()) { //1
-			System.out.println("No contact found"); //1
-		} else if (results.size() > 1) { //1
-			System.out.println("Multiple contacts found"); //1
-		} else {
-			Node<Contact> node = results.getHead(); //1
+            if (this.hasConflict(event)) {
+                System.out.println("This event conflicts with another event for this contact or other contacts");
+                return;
+            }
 
-			if (node.getData().notConflictingEvents(event)) { //n
-				System.out.println("This event conflicts with another event for this contact"); //1*n
-				return; //1
-			}
+            event.setContact(node.getData());
+            node.getData().addEvent(event);
 
-			event.setContact(node.getData()); //1
-			node.getData().addEvent(event);  //n
+            this.events.add(event);
 
-			this.events.add(event); //n
-
-			System.out.println("Event added successfully!"); //1
-		}
-		System.out.println(); //1
-		//2n²+4n+17
-	}
+            System.out.println("Event added successfully!");
+        }
+    }
+    private boolean hasConflict(Event newEvent) {
+        Node<Event> currentEventNode = events.getHead();
+        while (currentEventNode != null) {
+            if (newEvent.isConflicting(currentEventNode.getData())) {
+                return true;
+            }
+            currentEventNode = currentEventNode.getNext();
+        }
+        return false;
+    }
 
 	private void printEventDetails() {
 		System.out.println("Enter search criteria:"); //1
