@@ -60,45 +60,27 @@ public class Event implements Comparable<Event> {
         this.contact = contact;//1
     }
 
-    public boolean conflict(Event event) {
-        return this.date.equals(event.getDate());//1
-    }
+   
 
-    public void setDate(String dateString, Scanner scanner, LinkedListADT<Event> allEvents) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");//1
-        while (true) {//n
+    public void setDate(Scanner scanner) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        while (true) {
             try {
-                Date date = sdf.parse(dateString);//n
-                Calendar proposedDate = Calendar.getInstance();//n
-                proposedDate.setTime(date);//n
+                System.out.print("Enter the event's start date and time (dd/MM/yyyy HH:mm): ");
+                this.startTime = formatter.parse(scanner.nextLine());
 
-                // Check for conflicts with other events
-                boolean conflict = false;//n
-                Node<Event> currentNode = allEvents.getHead();//n
-                while (currentNode != null) {//n*n=n²
-                    if (currentNode.getData().getDate().equals(proposedDate)) {//n
-                        conflict = true;//1
-                        break;//1
-                    }
-                    currentNode = currentNode.getNext();//n
+                System.out.print("Enter the event's end date and time (dd/MM/yyyy HH:mm): ");
+                this.endTime = formatter.parse(scanner.nextLine());
+
+                if (endTime.before(startTime) || endTime.equals(startTime)) {
+                    System.out.println("End time should be after start time. Please try again.");
+                    continue;
                 }
-
-                if (conflict) {//n
-                    System.out.println("There is already an event scheduled at this time.");//n
-                    System.out.print("Please choose another time or date (dd/MM/yyyy HH:mm): ");//n
-                    dateString = scanner.nextLine();//n
-                    continue;//n // Will go back to the beginning of the while loop the nearest one
-                }
-
-                this.date = proposedDate;//1
-                break;//1  // If successfully parsed and no conflict, break out of the loop
-
-            } catch (ParseException e) {
-                System.out.print("Incorrect date format. Please enter again (dd/MM/yyyy HH:mm): ");//n
-                dateString = scanner.nextLine();//n
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid date or time. Please try again.");
             }
         }
-        //n²+15n+5
     }
 
     public void setLocation(String location) {
@@ -109,13 +91,16 @@ public class Event implements Comparable<Event> {
     public int compareTo(Event event) {
         return this.getTitle().compareTo(event.getTitle());//1
     }
-
+public boolean isConflicting(Event otherEvent) {
+        return (this.startTime.before(otherEvent.getEndTime()) && otherEvent.getStartTime().before(this.endTime));
+    }
     @Override
     public String toString() {
-        return "Title: " + this.title + "\n" + //1
-        		 "Contact: " + this.contact.getName() + "\n"+ //1
-                "Date: " + this.date.getTime() + "\n" + //1
-                "Location: " + this.location + "\n" ;//1
-          //4
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        return "Title: " + this.title + "\n" +
+               "Contact: " + this.contact.getName() + "\n" +
+               "Starting time: " + sdf.format(this.startTime.getTime()) + "\n" +
+               "Ending time: " + sdf.format(this.endTime.getTime()) + "\n" +
+               "Location: " + this.location;
     }
 }
