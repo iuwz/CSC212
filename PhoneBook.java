@@ -44,7 +44,7 @@ public class PhoneBook {
 		System.out.print("Enter the contact's phone number: "); //1
 		contact.setPhoneNumber(scanner.nextLine(), scanner); //1*n
 		System.out.print("Enter the contact's email address: "); //1
-		contact.setEmailAddress(scanner.nextLine(), scanner); //1*n
+		contact.setEmailAddress(scanner.nextLine(), scanner); //1*6n
 		System.out.print("Enter the contact's address: "); //1
 		contact.setAddress(scanner.nextLine()); //1
 		System.out.print("Enter the contact's birth date (dd/MM/yyyy): "); //1
