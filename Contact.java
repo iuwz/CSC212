@@ -110,7 +110,7 @@ public class Contact implements Comparable<Contact> {
 
             // Checking if email contains '@' and '.' but not at the beginning or end because if the @ or . is in the end the last item in the array will be empty or the first item will be empty
             if (atSplit.length == 2 && dotSplit.length >= 2 && !atSplit[atSplit.length-1].isEmpty() && !dotSplit[dotSplit.length-1].isEmpty() && !atSplit[0].isEmpty() && !dotSplit[0].isEmpty() ) {//n
-                this.emailAddress = emailAddress;//n
+                this.emailAddress = emailAddress;//1
                 break;//1
             } else {
                 System.out.print("Please enter a valid email: ");//n
