@@ -59,7 +59,7 @@ public class Contact implements Comparable<Contact> {
     }
 
     public void addEvent(Event event) {
-        this.events.add(event);
+        this.events.add(event); //1
     }
 
     public String getEmailAddress() {
@@ -89,7 +89,7 @@ public class Contact implements Comparable<Contact> {
                 if (phoneNumber.length() != 10)//n
                     throw new RuntimeErrorException(null);//n
                 else {
-                    this.phoneNumber = phoneNumber;//n
+                    this.phoneNumber = phoneNumber;//1
                     break;//1
                 }
             } catch (NumberFormatException e) {
@@ -130,7 +130,7 @@ public class Contact implements Comparable<Contact> {
         while (true) {
             try {
                 Date date = sdf.parse(birthDate);//n // this variable is only used to throw a parseException
-                this.birthDate = birthDate;//n
+                this.birthDate = birthDate;//1
                 break;//1  // If successfully parsed, break out of the loop
             } catch (ParseException e) {
                 System.out.print("Incorrect date format. Please enter again (dd/MM/yyyy): ");//n
