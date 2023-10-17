@@ -89,7 +89,7 @@ public class Contact implements Comparable<Contact> {
                 if (phoneNumber.length() != 10)//n
                     throw new RuntimeErrorException(null);//n
                 else {
-                    this.phoneNumber = phoneNumber;//1
+                    this.phoneNumber = phoneNumber;//n
                     break;//1
                 }
             } catch (NumberFormatException e) {
@@ -110,7 +110,7 @@ public class Contact implements Comparable<Contact> {
 
             // Checking if email contains '@' and '.' but not at the beginning or end because if the @ or . is in the end the last item in the array will be empty or the first item will be empty
             if (atSplit.length == 2 && dotSplit.length >= 2 && !atSplit[atSplit.length-1].isEmpty() && !dotSplit[dotSplit.length-1].isEmpty() && !atSplit[0].isEmpty() && !dotSplit[0].isEmpty() ) {//n
-                this.emailAddress = emailAddress;//1
+                this.emailAddress = emailAddress;//n
                 break;//1
             } else {
                 System.out.print("Please enter a valid email: ");//n
@@ -121,7 +121,7 @@ public class Contact implements Comparable<Contact> {
 
 
     public void setAddress(String address) {
-        this.address = address;//n
+        this.address = address;//1
     }
 
     public void setBirthDate(String birthDate, Scanner scanner) {
@@ -130,7 +130,7 @@ public class Contact implements Comparable<Contact> {
         while (true) {
             try {
                 Date date = sdf.parse(birthDate);//n // this variable is only used to throw a parseException
-                this.birthDate = birthDate;//1
+                this.birthDate = birthDate;//n
                 break;//1  // If successfully parsed, break out of the loop
             } catch (ParseException e) {
                 System.out.print("Incorrect date format. Please enter again (dd/MM/yyyy): ");//n
