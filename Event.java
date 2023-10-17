@@ -1,6 +1,5 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -80,9 +79,9 @@ public class Event implements Comparable<Event> {
 
                 if (endTime.before(startTime) || endTime.equals(startTime)) {//n
                     System.out.println("End time should be after start time. Please try again.");//n
-                    continue;
+                    continue; //n
                 }
-                break;/1
+                break; //1
             } catch (Exception e) {
                 System.out.println("Invalid date or time. Please try again.");//n
             }
@@ -107,6 +106,6 @@ public boolean isConflicting(Event otherEvent) {
                "Contact: " + this.contact.getName() + "\n" +
                "Starting time: " + sdf.format(this.startTime.getTime()) + "\n" +
                "Ending time: " + sdf.format(this.endTime.getTime()) + "\n" +
-               "Location: " + this.location;//1
+               "Location: " + this.location; //1
     }
 }
