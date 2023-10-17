@@ -59,7 +59,7 @@ public class Contact implements Comparable<Contact> {
     }
 
     public void addEvent(Event event) {
-        this.events.add(event); //to be calculated
+        this.events.add(event); //3n+14
     }
 
     public String getEmailAddress() {
@@ -153,7 +153,7 @@ public class Contact implements Comparable<Contact> {
     }
 
     public boolean notConflictingEvents(Event event) {
-        return !this.events.search(data -> data.conflict(event)).isEmpty();//n^2 * n = n^3 //for each node in events linked list get it's data and check if there is conflict between the data and the given event
+        return !this.events.search(data -> data.conflict(event)).isEmpty();//(3n^2+28n+4) * n = 3n^3+28n^2+4n //for each node in events linked list get it's data and check if there is conflict between the data and the given event
     }
 
 
