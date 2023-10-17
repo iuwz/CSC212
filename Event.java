@@ -12,108 +12,109 @@ public class Event implements Comparable<Event> {
     /**
      * The title of the event
      */
-    private String title;
+    private String title;//1
     /**
      * The date and time of the event
      */
-    private Calendar date;
+    private Calendar date;//1
 
     /**
      * The location of the event
      */
-    private String location;
+    private String location;//1
 
     /**
      * The contact associated with the event
      */
-    private Contact contact;
+    private Contact contact;//1
 
     public Event(String title, String location) {
-        this.title = title;
-        this.location = location;
+        this.title = title;//1
+        this.location = location;//1
     }
 
     public Event() {
     }
 
     public Contact getContact() {
-        return contact;
+        return contact;//1
     }
 
     public String getTitle() {
-        return title;
+        return title;//1
     }
 
     public Calendar getDate() {
-        return date;
+        return date;//1
     }
 
     public String getLocation() {
-        return location;
+        return location;//1
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = title;//1
     }
 
     public void setContact(Contact contact) {
-        this.contact = contact;
+        this.contact = contact;//1
     }
 
     public boolean conflict(Event event) {
-        return this.date.equals(event.getDate());
+        return this.date.equals(event.getDate());//1
     }
 
-     public void setDate(String dateString, Scanner scanner, LinkedListADT<Event> allEvents) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        while (true) {
+    public void setDate(String dateString, Scanner scanner, LinkedListADT<Event> allEvents) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");//1
+        while (true) {//n
             try {
-                Date date = sdf.parse(dateString);
-                Calendar proposedDate = Calendar.getInstance();
-                proposedDate.setTime(date);
+                Date date = sdf.parse(dateString);//n
+                Calendar proposedDate = Calendar.getInstance();//n
+                proposedDate.setTime(date);//n
 
                 // Check for conflicts with other events
-                boolean conflict = false;
-                Node<Event> currentNode = allEvents.getHead();
-                while (currentNode != null) {
-                    if (currentNode.getData().getDate().equals(proposedDate)) {
-                        conflict = true;
-                        break;
+                boolean conflict = false;//n
+                Node<Event> currentNode = allEvents.getHead();//n
+                while (currentNode != null) {//n*n
+                    if (currentNode.getData().getDate().equals(proposedDate)) {//n
+                        conflict = true;//1
+                        break;//1
                     }
-                    currentNode = currentNode.getNext();
+                    currentNode = currentNode.getNext();//n
                 }
 
-                if (conflict) {
-                    System.out.println("There is already an event scheduled at this time.");
-                    System.out.print("Please choose another time or date (dd/MM/yyyy HH:mm): ");
-                    dateString = scanner.nextLine();
-                    continue; // Will go back to the beginning of the while loop
+                if (conflict) {//n
+                    System.out.println("There is already an event scheduled at this time.");//n
+                    System.out.print("Please choose another time or date (dd/MM/yyyy HH:mm): ");//n
+                    dateString = scanner.nextLine();//n
+                    continue;//n // Will go back to the beginning of the while loop the nearest one
                 }
 
-                this.date = proposedDate;
-                break;  // If successfully parsed and no conflict, break out of the loop
+                this.date = proposedDate;//1
+                break;//1  // If successfully parsed and no conflict, break out of the loop
 
             } catch (ParseException e) {
-                System.out.print("Incorrect date format. Please enter again (dd/MM/yyyy HH:mm): ");
-                dateString = scanner.nextLine();
+                System.out.print("Incorrect date format. Please enter again (dd/MM/yyyy HH:mm): ");//n
+                dateString = scanner.nextLine();//n
             }
         }
     }
 
     public void setLocation(String location) {
-        this.location = location;
+        this.location = location;//1
     }
 
     @Override
     public int compareTo(Event event) {
-        return this.getTitle().compareTo(event.getTitle());
+        return this.getTitle().compareTo(event.getTitle());//1
     }
 
     @Override
     public String toString() {
-        return "Event title: " + this.title + "\n" +
-        		 "Contact name: " + this.contact.getName() + "\n"+
-                "Date and time: " + this.date.getTime() + "\n" +
-                "Event location: " + this.location + "\n" ;
+        return "Title: " + this.title + "\n" +
+        		 "Contact: " + this.contact.getName() + "\n"+
+                "Date: " + this.date.getTime() + "\n" +
+                "Location: " + this.location + "\n" ;//1
+               
     }
 }
