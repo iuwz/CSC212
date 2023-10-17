@@ -1,28 +1,28 @@
 import java.util.Scanner;
 
 public class PhoneBook {
-	private final Scanner scanner = new Scanner(System.in);
-	private final LinkedListADT<Contact> contacts = new LinkedListADT<>();
-	private final LinkedListADT<Event> events = new LinkedListADT<>();
+	private final Scanner scanner = new Scanner(System.in); //1
+	private final LinkedListADT<Contact> contacts = new LinkedListADT<>(); //1
+	private final LinkedListADT<Event> events = new LinkedListADT<>(); //1
 
 	/**
 	 * This is the main menu, it will display the options and return the user's choice
 	 */
 	private int mainMenu() {
-		System.out.println("Please choose an option: ");
-		System.out.println("1. Add a contact");
-		System.out.println("2. Search for a contact");
-		System.out.println("3. Delete a contact");
-		System.out.println("4. Schedule an event");
-		System.out.println("5. Print event details");
-		System.out.println("6. Print contacts by first name");
-		System.out.println("7. Print all events alphabetically");
-		System.out.println("8. Exit");
+		System.out.println("Please choose an option: "); //1
+		System.out.println("1. Add a contact"); //1 
+		System.out.println("2. Search for a contact"); //1 
+		System.out.println("3. Delete a contact"); //1
+		System.out.println("4. Schedule an event"); //1
+		System.out.println("5. Print event details"); //1 
+		System.out.println("6. Print contacts by first name"); //1
+		System.out.println("7. Print all events alphabetically"); //1
+		System.out.println("8. Exit"); //1
 
 
 		while (true) {
 			try {
-				System.out.print("Enter your choice: ");
+				System.out.print("Enter your choice: "); 
 				int choice = Integer.parseInt(scanner.nextLine());
 				System.out.println();
 				if (choice < 1 || choice > 8) {
@@ -37,44 +37,44 @@ public class PhoneBook {
 	}
 
 	private void addContact() {
-		Contact contact = new Contact();
+		Contact contact = new Contact(); //1
 
-		System.out.print("Enter the contact's name: ");
-		contact.setName(scanner.nextLine());
-		System.out.print("Enter the contact's phone number: ");
-		contact.setPhoneNumber(scanner.nextLine(), scanner);
-		System.out.print("Enter the contact's email address: ");
-		contact.setEmailAddress(scanner.nextLine(), scanner);
-		System.out.print("Enter the contact's address: ");
-		contact.setAddress(scanner.nextLine());
-		System.out.print("Enter the contact's birth date (dd/MM/yyyy): ");
-		contact.setBirthDate(scanner.nextLine(), scanner);
-		System.out.print("Enter any notes about the contact: ");
-		contact.setNotes(scanner.nextLine());
+		System.out.print("Enter the contact's name: "); //1
+		contact.setName(scanner.nextLine()); //1
+		System.out.print("Enter the contact's phone number: "); //1
+		contact.setPhoneNumber(scanner.nextLine(), scanner); //1
+		System.out.print("Enter the contact's email address: "); //1
+		contact.setEmailAddress(scanner.nextLine(), scanner); //1
+		System.out.print("Enter the contact's address: "); //1
+		contact.setAddress(scanner.nextLine()); //1 
+		System.out.print("Enter the contact's birth date (dd/MM/yyyy): "); //1
+		contact.setBirthDate(scanner.nextLine(), scanner); //1
+		System.out.print("Enter any notes about the contact: "); //1
+		contact.setNotes(scanner.nextLine()); //1
 
 
 		// check if a contact with name and phone exists.
 		ContactSearchCriteria searchCriteria = new ContactSearchCriteria(contact.getName(), 1);  // 1 corresponds to NAME
 		ContactSearchCriteria phoneSearchCriteria = new ContactSearchCriteria(contact.getPhoneNumber(), 2);  // 2 corresponds to PHONE_NUMBER
 
-		if (this.contacts.search(searchCriteria).isEmpty() && this.contacts.search(phoneSearchCriteria).isEmpty()) {
-			this.contacts.add(contact);
+		if (this.contacts.search(searchCriteria).isEmpty() && this.contacts.search(phoneSearchCriteria).isEmpty()) { //1
+			this.contacts.add(contact); //1
 
-			System.out.println("Contact added successfully!");
+			System.out.println("Contact added successfully!");//1
 		} else {
-			System.out.println("Contact with name or phone number already exists.");
+			System.out.println("Contact with name or phone number already exists."); //1
 		}
-		System.out.println();
+		System.out.println(); //1
 	}
 
     private void searchForContact() {
-        System.out.println("Enter search criteria.");
-        System.out.println("1. Name");
-        System.out.println("2. Phone Number");
-        System.out.println("3. Email Address");
-        System.out.println("4. Address");
-        System.out.println("5. Birthday");
-        int choice;
+        System.out.println("Enter search criteria."); //1
+        System.out.println("1. Name"); //1
+        System.out.println("2. Phone Number"); //1
+        System.out.println("3. Email Address"); //1 
+        System.out.println("4. Address"); //1
+        System.out.println("5. Birthday"); //1
+        int choice; 
 
         while (true) {
             try {
