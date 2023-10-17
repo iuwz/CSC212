@@ -260,12 +260,12 @@ public class PhoneBook {
 	}
 
 	private void printContactsByFirstName() {
-		System.out.print("Enter the first name: ");
+		System.out.print("Enter the first name: "); //1
 
-		String firstName = scanner.nextLine();
+		String firstName = scanner.nextLine(); //1
 
-		ContactSearchCriteria criteria = new ContactSearchCriteria(firstName, 6);  // 6 corresponds to FIRST_NAME
-		LinkedListADT<Contact> results = this.contacts.search(criteria);
+		ContactSearchCriteria criteria = new ContactSearchCriteria(firstName, 6); //2  // 6 corresponds to FIRST_NAME
+		LinkedListADT<Contact> results = this.contacts.search(criteria); 
 
 		if (results.isEmpty()) {
 			System.out.println("No contact found");
@@ -277,10 +277,10 @@ public class PhoneBook {
 	}
 
 	private void printAllEventsAlphabetically() {  // it is already sorted alphabetically in add method in linked list
-		if(this.events.isEmpty())
-			System.out.println("There are no events scheduled");
+		if(this.events.isEmpty()) //1
+			System.out.println("There are no events scheduled"); //1
 		else
-			System.out.println(this.events);
+			System.out.println(this.events); //n+1
 	}
 
 	public static void main(String[] args) {
