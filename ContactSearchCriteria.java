@@ -24,6 +24,8 @@ public class ContactSearchCriteria implements LinkedListADT.SearchCriteria<Conta
                 return criteria.equalsIgnoreCase(contact.getAddress());//1
             case 5://1  // Birth Date
                 return criteria.equalsIgnoreCase(contact.getBirthDate());//1
+                  case 6:  // First Name 
+                return criteria.equalsIgnoreCase(contact.getFirstName());
             default://1
                 return false;//1
         }
