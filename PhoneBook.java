@@ -312,7 +312,7 @@ public class PhoneBook {
 				phoneBook.addContact(); //O(n²)
 				break;
 			case 2:
-				phoneBook.searchForContact(); //O(n)
+				phoneBook.searchForContact(); //O(n2)
 				break;
 			case 3:
 				phoneBook.deleteContact(); //O(n³)
