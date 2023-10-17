@@ -74,7 +74,7 @@ public class PhoneBook {
         System.out.println("3. Email Address"); //1 
         System.out.println("4. Address"); //1
         System.out.println("5. Birthday"); //1
-        int choice; 
+        int choice; //1
 
         while (true) {
             try {
