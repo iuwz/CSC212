@@ -59,7 +59,7 @@ public class Contact implements Comparable<Contact> {
     }
 
     public void addEvent(Event event) {
-        this.events.add(event); //1
+        this.events.add(event); //to be calculated
     }
 
     public String getEmailAddress() {
@@ -82,7 +82,7 @@ public class Contact implements Comparable<Contact> {
         this.name = name;//1
     }
 
-    public void setPhoneNumber(String phoneNumber, Scanner scanner) {
+    public void setPhoneNumber(String phoneNumber, Scanner scanner) { //6n
         while (true) {//n
             try {
                 long checkIfNum = Long.parseLong(phoneNumber); //n // this variable is only used to throw a NumberFormatException
@@ -102,7 +102,7 @@ public class Contact implements Comparable<Contact> {
         }
     }
 
-    public void setEmailAddress(String emailAddress, Scanner scanner) {
+    public void setEmailAddress(String emailAddress, Scanner scanner) { //6n
         while (true) {//n
             // Splitting the string by '@' and by '.' and checking the resulting arrays' lengths.
             String[] atSplit = emailAddress.split("@");//n
@@ -124,10 +124,10 @@ public class Contact implements Comparable<Contact> {
         this.address = address;//1
     }
 
-    public void setBirthDate(String birthDate, Scanner scanner) {
+    public void setBirthDate(String birthDate, Scanner scanner) { //4n+1
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");//1
         
-        while (true) {
+        while (true) { //n
             try {
                 Date date = sdf.parse(birthDate);//n // this variable is only used to throw a parseException
                 this.birthDate = birthDate;//1
@@ -153,7 +153,7 @@ public class Contact implements Comparable<Contact> {
     }
 
     public boolean notConflictingEvents(Event event) {
-        return !this.events.search(data -> data.conflict(event)).isEmpty();//n //for each node in events linked list get it's data and check if there is conflict between the data and the given event
+        return !this.events.search(data -> data.conflict(event)).isEmpty();//n^2 * n = n^3 //for each node in events linked list get it's data and check if there is conflict between the data and the given event
     }
 
 
