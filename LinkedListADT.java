@@ -6,8 +6,8 @@
  * @param <T>
  */
 public class LinkedListADT<T extends Comparable<T>> {
-    private Node<T> head;//1
-    private int size;//1
+    private Node<T> head;
+    private int size;
 
     public LinkedListADT() {
         this.head = null;//1
