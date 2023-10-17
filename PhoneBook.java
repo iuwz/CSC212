@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 public class PhoneBook {
-	private final Scanner scanner = new Scanner(System.in); //1
-	private final LinkedListADT<Contact> contacts = new LinkedListADT<>(); //1
-	private final LinkedListADT<Event> events = new LinkedListADT<>(); //1
+	private final Scanner scanner = new Scanner(System.in); 
+	private final LinkedListADT<Contact> contacts = new LinkedListADT<>(); 
+	private final LinkedListADT<Event> events = new LinkedListADT<>(); 
 
 	/**
 	 * This is the main menu, it will display the options and return the user's choice
@@ -74,7 +74,7 @@ public class PhoneBook {
         System.out.println("3. Email Address"); //1 
         System.out.println("4. Address"); //1
         System.out.println("5. Birthday"); //1
-        int choice; //1
+        int choice; 
 
         while (true) {
             try {
