@@ -3,8 +3,8 @@
  * This class allows us to search for a contact by name, phone number, email address, address or birth date
  */
 public class ContactSearchCriteria implements LinkedListADT.SearchCriteria<Contact> {
-    private String criteria;//1
-    private int type;//1
+    private String criteria;
+    private int type;
 
     public ContactSearchCriteria(String criteria, int type) {
        
