@@ -28,7 +28,7 @@ public class LinkedListADT<T extends Comparable<T>> {
         }
         Node<T> current = head;//1
         Node<T> previous = null;//1
-        while (current != null && current.getData().compareTo(data) < 0) {//n
+        while (current != null && current.getData().compareTo(data) < 0) {//n+1
             previous = current;//n
             current = current.getNext();//n
         }
@@ -53,7 +53,7 @@ public class LinkedListADT<T extends Comparable<T>> {
         }
         Node<T> current = head;//1
         Node<T> previous = null;//1
-        while (current != null && current.getData().compareTo(data) != 0) {//n
+        while (current != null && current.getData().compareTo(data) != 0) {//n+1
             previous = current;//n
             current = current.getNext();//n
         }
@@ -83,7 +83,7 @@ public class LinkedListADT<T extends Comparable<T>> {
         LinkedListADT<T> results = new LinkedListADT<>();//1
 
         Node<T> current = head;//1
-        while (current != null) {//n
+        while (current != null) {//n+1
             if (criteria.matches(current.getData())) {//n
                 results.add(current.getData());//n
             }
@@ -105,11 +105,11 @@ public class LinkedListADT<T extends Comparable<T>> {
     @Override
     public String toString() {
         // Create a StringBuilder, which is an efficient way to concatenate strings.
-        StringBuilder builder = new StringBuilder();//n
+        StringBuilder builder = new StringBuilder();//1
         // Initialize a pointer to the head of the linked list.
-        Node<T> current = head;//n
+        Node<T> current = head;//1
         // Traverse the linked list until we reach the end (i.e., current becomes null).
-        while (current != null) {//n
+        while (current != null) {//n+1
             // Append the data of the current node to the StringBuilder.
             builder.append(current.getData());//n
             // Append a newline to separate each piece of data.
