@@ -75,7 +75,7 @@ public class Event implements Comparable<Event> {
                 // Check for conflicts with other events
                 boolean conflict = false;//n
                 Node<Event> currentNode = allEvents.getHead();//n
-                while (currentNode != null) {//n*n
+                while (currentNode != null) {//n*n=n²
                     if (currentNode.getData().getDate().equals(proposedDate)) {//n
                         conflict = true;//1
                         break;//1
@@ -98,6 +98,7 @@ public class Event implements Comparable<Event> {
                 dateString = scanner.nextLine();//n
             }
         }
+        //n²+15n+5
     }
 
     public void setLocation(String location) {
@@ -111,10 +112,10 @@ public class Event implements Comparable<Event> {
 
     @Override
     public String toString() {
-        return "Title: " + this.title + "\n" +
-        		 "Contact: " + this.contact.getName() + "\n"+
-                "Date: " + this.date.getTime() + "\n" +
+        return "Title: " + this.title + "\n" + //1
+        		 "Contact: " + this.contact.getName() + "\n"+ //1
+                "Date: " + this.date.getTime() + "\n" + //1
                 "Location: " + this.location + "\n" ;//1
-               
+          //4
     }
 }
