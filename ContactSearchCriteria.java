@@ -1,14 +1,4 @@
-/*************Example***************
-CLASS: ContactSearchCriteria..java
-CSC212 Data structures - Project phase I
-Fall 2023
-EDIT DATE:
-7-9 Oct
-TEAM:
-Code Crafters 
-AUTHORS: Mazen Alkhodairi, Abdulaziz Alali, Abdulaziz Altekhaifi
-authors-names Alkhodairi 443102007 , Alali (443100240), Altekhaifi 443100756
-***********************************/
+
 public class ContactSearchCriteria implements LinkedListADT.SearchCriteria<Contact> {
     private String criteria;
     private int type;
