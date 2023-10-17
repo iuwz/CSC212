@@ -67,52 +67,50 @@ public class PhoneBook {
 		System.out.println();
 	}
 
-	private void searchForContact() {
-		System.out.println("Enter search criteria.");
-		System.out.println("1. Name");
-		System.out.println("2. Phone Number");
-		System.out.println("3. Email Address");
-		System.out.println("4. Address");
-		System.out.println("5. Birthday");
-		System.out.println("6. First Name");
-		int choice;
+    private void searchForContact() {
+        System.out.println("Enter search criteria.");
+        System.out.println("1. Name");
+        System.out.println("2. Phone Number");
+        System.out.println("3. Email Address");
+        System.out.println("4. Address");
+        System.out.println("5. Birthday");
+        int choice;
 
-		while (true) {
-			try {
-				System.out.print("Enter your choice: ");
-				choice = Integer.parseInt(scanner.nextLine());
-				if (choice < 1 || choice > 6) {
-					System.err.println("Please enter a number between 1 and 6");
-				} else {
-					break;
-				}
-			} catch (NumberFormatException e) {
-				System.err.println("Please enter a number between 1 and 6");
-			}
-		}
+        while (true) {
+            try {
+                System.out.print("Enter your choice: ");
+                choice = Integer.parseInt(scanner.nextLine());
+                if (choice < 1 || choice > 5) {
+                    System.err.println("Please enter a number between 1 and 5");
+                } else {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.err.println("Please enter a number between 1 and 5");
+            }
+        }
 
-		String prompt = "";
+        String prompt = "";
 
-		switch (choice) {
-		case 1:
-			prompt = "Enter the contact's name: ";
-			break;
-		case 2:
-			prompt = "Enter the contact's phone number: ";
-			break;
-		case 3:
-			prompt = "Enter the contact's email: ";
-			break;
-		case 4:
-			prompt = "Enter the contact's address: ";
-			break;
-		case 5:
-			prompt = "Enter the contact's birthday (dd/MM/yyyy): ";
-			break;
-		case 6:
-			prompt = "Enter the contact's first name: ";
-			break;
-		}
+        switch (choice) {
+            case 1:
+                prompt = "Enter the contact's name: ";
+                break;
+            case 2:
+                prompt = "Enter the contact's phone number: ";
+                break;
+            case 3:
+                prompt = "Enter the contact's email: ";
+                break;
+            case 4:
+                prompt = "Enter the contact's address: ";
+                break;
+            case 5:
+                prompt = "Enter the contact's birthday (dd/MM/yyyy): ";
+                break;
+           
+        }
+
 
 
 		System.out.print(prompt);
