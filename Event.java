@@ -64,14 +64,35 @@ public class Event implements Comparable<Event> {
         return this.date.equals(event.getDate());
     }
 
-    public void setDate(String dateString, Scanner scanner) {
+     public void setDate(String dateString, Scanner scanner, LinkedListADT<Event> allEvents) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         while (true) {
             try {
                 Date date = sdf.parse(dateString);
-                this.date = Calendar.getInstance();
-                this.date.setTime(date);
-                break;  // If successfully parsed, break out of the loop
+                Calendar proposedDate = Calendar.getInstance();
+                proposedDate.setTime(date);
+
+                // Check for conflicts with other events
+                boolean conflict = false;
+                Node<Event> currentNode = allEvents.getHead();
+                while (currentNode != null) {
+                    if (currentNode.getData().getDate().equals(proposedDate)) {
+                        conflict = true;
+                        break;
+                    }
+                    currentNode = currentNode.getNext();
+                }
+
+                if (conflict) {
+                    System.out.println("There is already an event scheduled at this time.");
+                    System.out.print("Please choose another time or date (dd/MM/yyyy HH:mm): ");
+                    dateString = scanner.nextLine();
+                    continue; // Will go back to the beginning of the while loop
+                }
+
+                this.date = proposedDate;
+                break;  // If successfully parsed and no conflict, break out of the loop
+
             } catch (ParseException e) {
                 System.out.print("Incorrect date format. Please enter again (dd/MM/yyyy HH:mm): ");
                 dateString = scanner.nextLine();
