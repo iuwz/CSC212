@@ -27,6 +27,7 @@ public class ContactSearchCriteria implements LinkedListADT.SearchCriteria<Conta
             default://1
                 return false;//1
         }
+        //12
     }
 
     
