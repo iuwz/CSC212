@@ -9,33 +9,33 @@ public class Contact implements Comparable<Contact> {
     /**
      * The name of the contact
      */
-    private String name;//1
+    private String name;
 
     /**
      * The email address of the contact
      */
-    private String emailAddress;//1
+    private String emailAddress;
 
 
     /**
      * The phone number of the contact
      */
-    private String phoneNumber;//1
+    private String phoneNumber;
 
     /**
      * The address of the contact
      */
-    private String address;//1
+    private String address;
 
     /**
      * The birth date of the contact. Format is dd/MM/yyyy
      */
-    private String birthDate;//1
+    private String birthDate;
 
     /**
      * Any notes about the contact
      */
-    private String notes;//1
+    private String notes;
 
     /**
      * The events belonging to this contact
