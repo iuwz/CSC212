@@ -17,5 +17,6 @@ public class EventSearchCriteria implements LinkedListADT.SearchCriteria<Event> 
                 return data.getTitle().equalsIgnoreCase(criteria);//1
         }
         return false;//1
+        //5
     }
 }
