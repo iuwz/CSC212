@@ -67,7 +67,7 @@ public class Event implements Comparable<Event> {
 
    
 
-    public void setDate(Scanner scanner) {
+    public void setDate(Scanner scanner) { //9n+1
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");//1
         while (true) {//n
             try {
