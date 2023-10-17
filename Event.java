@@ -12,21 +12,21 @@ public class Event implements Comparable<Event> {
     /**
      * The title of the event
      */
-    private String title;//1
+    private String title;
     /**
      * The date and time of the event
      */
-    private Calendar date;//1
+    private Calendar date;
 
     /**
      * The location of the event
      */
-    private String location;//1
+    private String location;
 
     /**
      * The contact associated with the event
      */
-    private Contact contact;//1
+    private Contact contact;
 
     public Event(String title, String location) {
         this.title = title;//1
