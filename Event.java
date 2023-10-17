@@ -16,7 +16,8 @@ public class Event implements Comparable<Event> {
     /**
      * The date and time of the event
      */
-    private Calendar date;
+    private Date startTime;
+    private Date endTime;
 
     /**
      * The location of the event
@@ -63,22 +64,22 @@ public class Event implements Comparable<Event> {
    
 
     public void setDate(Scanner scanner) {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        while (true) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");//1
+        while (true) {//n
             try {
-                System.out.print("Enter the event's start date and time (dd/MM/yyyy HH:mm): ");
-                this.startTime = formatter.parse(scanner.nextLine());
+                System.out.print("Enter the event's start date and time (dd/MM/yyyy HH:mm): ");//n
+                this.startTime = formatter.parse(scanner.nextLine());//n
 
-                System.out.print("Enter the event's end date and time (dd/MM/yyyy HH:mm): ");
-                this.endTime = formatter.parse(scanner.nextLine());
+                System.out.print("Enter the event's end date and time (dd/MM/yyyy HH:mm): ");//n
+                this.endTime = formatter.parse(scanner.nextLine());//n
 
-                if (endTime.before(startTime) || endTime.equals(startTime)) {
-                    System.out.println("End time should be after start time. Please try again.");
+                if (endTime.before(startTime) || endTime.equals(startTime)) {//n
+                    System.out.println("End time should be after start time. Please try again.");//n
                     continue;
                 }
-                break;
+                break;/1
             } catch (Exception e) {
-                System.out.println("Invalid date or time. Please try again.");
+                System.out.println("Invalid date or time. Please try again.");//n
             }
         }
     }
@@ -92,7 +93,7 @@ public class Event implements Comparable<Event> {
         return this.getTitle().compareTo(event.getTitle());//1
     }
 public boolean isConflicting(Event otherEvent) {
-        return (this.startTime.before(otherEvent.getEndTime()) && otherEvent.getStartTime().before(this.endTime));
+        return (this.startTime.before(otherEvent.getEndTime()) && otherEvent.getStartTime().before(this.endTime));//1
     }
     @Override
     public String toString() {
@@ -101,6 +102,6 @@ public boolean isConflicting(Event otherEvent) {
                "Contact: " + this.contact.getName() + "\n" +
                "Starting time: " + sdf.format(this.startTime.getTime()) + "\n" +
                "Ending time: " + sdf.format(this.endTime.getTime()) + "\n" +
-               "Location: " + this.location;
+               "Location: " + this.location;//1
     }
 }
