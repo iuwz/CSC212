@@ -142,7 +142,7 @@ public class Contact implements Comparable<Contact> {
     public void setNotes(String notes) {
         this.notes = notes;//1
     }
-    public String getFirstName() {
+    public String getFirstName() { //2
         if (name != null && name.contains(" ")) {//1
             return name.split(" ")[0]; //1 // Assuming the name is "First Last" format and [0] is added because we want it to return the first split of the array
         }
