@@ -152,10 +152,7 @@ public class Contact implements Comparable<Contact> {
         this.events = new LinkedListADT<>();//1
     }
 
-    public boolean notConflictingEvents(Event event) {
-        return !this.events.search(data -> data.conflict(event)).isEmpty();//(3n^2+28n+4) * n = 3n^3+28n^2+4n //for each node in events linked list get it's data and check if there is conflict between the data and the given event
-    }
-
+    
 
     public String toString() {
         return "Name: " + name +"\nPhone Number: " + phoneNumber + "\nEmail Address: " + emailAddress +  "\nAddress: " + address + "\nBirth Date: " + birthDate + "\nNotes: " + notes + "\n";//1
