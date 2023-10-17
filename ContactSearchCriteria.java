@@ -7,9 +7,7 @@ public class ContactSearchCriteria implements LinkedListADT.SearchCriteria<Conta
     private int type;
 
     public ContactSearchCriteria(String criteria, int type) {
-        if (type < 1 || type > 6) {
-            throw new IllegalArgumentException("Type must be between 1 and 6 inclusive.");
-        }
+       
         this.criteria = criteria;
         this.type = type;
     }
