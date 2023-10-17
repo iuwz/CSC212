@@ -1,6 +1,6 @@
 public class EventSearchCriteria implements LinkedListADT.SearchCriteria<Event> {
-	private String criteria;//1
-    private int type;//1
+	private String criteria;
+    private int type;
 
     
     public EventSearchCriteria(String criteria, int type) {
