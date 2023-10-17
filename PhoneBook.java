@@ -70,64 +70,64 @@ public class PhoneBook {
 
 	
     private void searchForContact() {
-        System.out.println("Enter search criteria.");
-        System.out.println("1. Name");
-        System.out.println("2. Phone Number");
-        System.out.println("3. Email Address");
-        System.out.println("4. Address");
-        System.out.println("5. Birthday");
+        System.out.println("Enter search criteria."); //1
+        System.out.println("1. Name"); //1
+        System.out.println("2. Phone Number"); //1
+        System.out.println("3. Email Address"); //1
+        System.out.println("4. Address"); //1
+        System.out.println("5. Birthday"); //1
         int choice;
 
-        while (true) {
+        while (true) { //n
             try {
-                System.out.print("Enter your choice: ");
-                choice = Integer.parseInt(scanner.nextLine());
-                if (choice < 1 || choice > 5) {
-                    System.err.println("Please enter a number between 1 and 5");
+                System.out.print("Enter your choice: "); //n
+                choice = Integer.parseInt(scanner.nextLine()); //n
+                if (choice < 1 || choice > 5) { //n
+                    System.err.println("Please enter a number between 1 and 5"); //n
                 } else {
-                    break;
+                    break; //1
                 }
             } catch (NumberFormatException e) {
-                System.err.println("Please enter a number between 1 and 5");
+                System.err.println("Please enter a number between 1 and 5"); //n
             }
         }
 
-        String prompt = "";
+        String prompt = ""; //1
 
         switch (choice) {
-            case 1:
-                prompt = "Enter the contact's name: ";
-                break;
-            case 2:
-                prompt = "Enter the contact's phone number: ";
-                break;
-            case 3:
-                prompt = "Enter the contact's email: ";
-                break;
-            case 4:
-                prompt = "Enter the contact's address: ";
-                break;
-            case 5:
-                prompt = "Enter the contact's birthday (dd/MM/yyyy): ";
-                break;
+            case 1: //1
+                prompt = "Enter the contact's name: "; //1
+                break; //1
+            case 2: //1
+                prompt = "Enter the contact's phone number: "; //1
+                break; //1
+            case 3: //1
+                prompt = "Enter the contact's email: "; //1
+                break; //1
+            case 4: //1
+                prompt = "Enter the contact's address: "; //1
+                break; //1
+            case 5: //1
+                prompt = "Enter the contact's birthday (dd/MM/yyyy): "; //1
+                break; //1
            
         }
 
 
-        System.out.print(prompt);
-        String searchFor = scanner.nextLine();
+        System.out.print(prompt); //1
+        String searchFor = scanner.nextLine(); //1
 
 
         // Create a new search criteria based on the contact information
-        ContactSearchCriteria criteria = new ContactSearchCriteria(searchFor, choice);
+        ContactSearchCriteria criteria = new ContactSearchCriteria(searchFor, choice); //1
 
-        LinkedListADT<Contact> results = this.contacts.search(criteria);
+        LinkedListADT<Contact> results = this.contacts.search(criteria); //3n^2+28n+4
 
-        if (results.isEmpty()) {
-            System.out.println("No contact found");
+        if (results.isEmpty()) { //1
+            System.out.println("No contact found"); //1
         } else {
-            System.out.println("Contacts found!");
-            System.out.println(results);
+            System.out.println("Contacts found!"); //1
+            System.out.println(results); //n
         }
     }
 	
