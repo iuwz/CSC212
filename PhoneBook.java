@@ -264,59 +264,59 @@ public class PhoneBook {
 
 		String firstName = scanner.nextLine(); //1
 
-		ContactSearchCriteria criteria = new ContactSearchCriteria(firstName, 6); //2  // 6 corresponds to FIRST_NAME
-		LinkedListADT<Contact> results = this.contacts.search(criteria); 
+		ContactSearchCriteria criteria = new ContactSearchCriteria(firstName, 6); //1  // 6 corresponds to FIRST_NAME
+		LinkedListADT<Contact> results = this.contacts.search(criteria); //1
 
-		if (results.isEmpty()) {
-			System.out.println("No contact found");
+		if (results.isEmpty()) { //1
+			System.out.println("No contact found"); //1
 		} else {
-			System.out.println("Contacts found!");
-			System.out.println(results);
+			System.out.println("Contacts found!"); //1
+			System.out.println(results); //1
 		}
-		System.out.println();
+		System.out.println(); //1
 	}
 
 	private void printAllEventsAlphabetically() {  // it is already sorted alphabetically in add method in linked list
 		if(this.events.isEmpty()) //1
 			System.out.println("There are no events scheduled"); //1
 		else
-			System.out.println(this.events); //n+1
+			System.out.println(this.events); //1
 	}
 
 	public static void main(String[] args) {
-		PhoneBook phoneBook = new PhoneBook();
-		System.out.println("Welcome to the Linked Tree Phonebook!");
+		PhoneBook phoneBook = new PhoneBook(); //1
+		System.out.println("Welcome to the Linked Tree Phonebook!"); //1
 		int choice;
 		do {
-			choice = phoneBook.mainMenu();
+			choice = phoneBook.mainMenu(); //1
 
 			switch (choice) {
-			case 1:
-				phoneBook.addContact();
-				break;
-			case 2:
-				phoneBook.searchForContact();
-				break;
-			case 3:
-				phoneBook.deleteContact();
-				break;
-			case 4:
-				phoneBook.scheduleEvent();
-				break;
-			case 5:
-				phoneBook.printEventDetails();
-				break;
-			case 6:
-				phoneBook.printContactsByFirstName();
-				break;
-			case 7:
-				phoneBook.printAllEventsAlphabetically();
-				break;
-			case 8:
-				System.out.println("Goodbye!");
-				break;
+			case 1: //n
+				phoneBook.addContact(); //n
+				break; //n
+			case 2: //n
+				phoneBook.searchForContact(); //n
+				break; //n
+			case 3: //n
+				phoneBook.deleteContact(); //n
+				break; //n
+			case 4: //n
+				phoneBook.scheduleEvent(); //n
+				break; //n
+			case 5: //n
+				phoneBook.printEventDetails(); //n
+				break; //n
+			case 6: //n
+				phoneBook.printContactsByFirstName(); //n
+				break; //n
+			case 7: //n
+				phoneBook.printAllEventsAlphabetically(); //n
+				break; //n
+			case 8: //n
+				System.out.println("Goodbye!"); //n
+				break; //n
 			}
-		} while (choice != 8);
+		} while (choice != 8); //n
 
 	}
 }
