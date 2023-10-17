@@ -185,7 +185,7 @@ public class PhoneBook {
 		contactName = scanner.nextLine(); //1
 
 		System.out.print("Enter the event's date and time (dd/MM/yyyy HH:mm): "); //1
-		event.setDate(scanner.nextLine(), scanner); //n²
+		 event.setDate(scanner.nextLine(), scanner, this.events); //n²
 		System.out.print("Enter the event's location: "); //1
 		event.setLocation(scanner.nextLine()); //1
 
