@@ -9,8 +9,7 @@ public class PhoneBook {
      * This is the main menu, it will display the options and return the user's choice
      */
     private int mainMenu() {
-        System.out.println("Welcome ot the Linked Tree Phonebook!");
-        System.out.println("Please choose an option");
+        System.out.println("Please choose an option: ");
         System.out.println("1. Add a contact");
         System.out.println("2. Search for a contact");
         System.out.println("3. Delete a contact");
@@ -25,6 +24,7 @@ public class PhoneBook {
             try {
                 System.out.print("Enter your choice: ");
                 int choice = Integer.parseInt(scanner.nextLine());
+		System.out.println();
                 if (choice < 1 || choice > 8) {
                     System.err.println("Please enter a number between 1 and 8");
                 } else {
@@ -47,7 +47,7 @@ public class PhoneBook {
         contact.setEmailAddress(scanner.nextLine(), scanner);
         System.out.print("Enter the contact's address: ");
         contact.setAddress(scanner.nextLine());
-                System.out.print("Enter the contact's birth date (dd/MM/yyyy): ");
+        System.out.print("Enter the contact's birth date (dd/MM/yyyy): ");
         contact.setBirthDate(scanner.nextLine(), scanner);
         System.out.print("Enter any notes about the contact: ");
         contact.setNotes(scanner.nextLine());
@@ -129,6 +129,7 @@ public class PhoneBook {
             System.out.println("Contacts found!");
             System.out.println(results);
         }
+	System.out.println();
     }
     private void deleteEventsAssociatedWithContact(Contact contact) {
         Node<Event> currentNode = events.getHead();
@@ -168,6 +169,7 @@ public class PhoneBook {
                 node = node.getNext();
             }
         }
+	System.out.println();
     }
 
     private void scheduleEvent() {
@@ -207,7 +209,7 @@ public class PhoneBook {
 
             System.out.println("Event added successfully!");
         }
-
+	System.out.println();
     }
 
     private void printEventDetails() {
@@ -256,6 +258,7 @@ public class PhoneBook {
             System.out.println("Events found!");
             System.out.println(results);
         }
+	System.out.println();
     }
 
     private void printContactsByFirstName() {
@@ -272,6 +275,7 @@ public class PhoneBook {
             System.out.println("Contacts found!");
             System.out.println(results);
         }
+	System.out.println();
     }
 
     private void printAllEventsAlphabetically() {  // it is already sorted alphabetically in add method in linked list
@@ -283,7 +287,7 @@ public class PhoneBook {
 
     public static void main(String[] args) {
         PhoneBook phoneBook = new PhoneBook();
-
+	System.out.println("Welcome to the Linked Tree Phonebook!");
         int choice;
         do {
             choice = phoneBook.mainMenu();
