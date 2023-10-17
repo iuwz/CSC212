@@ -64,7 +64,7 @@ public class PhoneBook {
 		} else {
 			System.out.println("Contact with name or phone number already exists."); //1
 		}
-		System.out.println();//1
+		System.out.println();//1		//n²+4n+14
 	}
 
 	private void searchForContact() {
@@ -130,6 +130,7 @@ public class PhoneBook {
 			System.out.println("Contacts found!"); //1
 			System.out.println(results); //1*n
 		}
+		//n²+6n+21
 	}
 	
 	private void deleteEventsAssociatedWithContact(Contact contact) {
@@ -140,6 +141,7 @@ public class PhoneBook {
 			}
 			currentNode = currentNode.getNext(); //1*n
 		}
+		//n²+3n+1
 	}
 	
 	private void deleteContact() {
@@ -170,6 +172,7 @@ public class PhoneBook {
 			}
 		}
 		System.out.println(); //1
+		//n³+n²+8n+8
 	}
 
 	private void scheduleEvent() {
@@ -210,6 +213,7 @@ public class PhoneBook {
 			System.out.println("Event added successfully!"); //1
 		}
 		System.out.println(); //1
+		//2n²+4n+17
 	}
 
 	private void printEventDetails() {
@@ -259,6 +263,7 @@ public class PhoneBook {
 			System.out.println(results); //n
 		}
 		System.out.println(); //1 
+		//n²+6n+14
 	}
 
 	private void printContactsByFirstName() {
@@ -276,13 +281,15 @@ public class PhoneBook {
 			System.out.println(results); //n
 		}
 		System.out.println();//1
+		//n²+n+7
 	}
 
 	private void printAllEventsAlphabetically() {  // it is already sorted alphabetically in add method in linked list
 		if(this.events.isEmpty())  //1
 			System.out.println("There are no events scheduled"); //1
 		else
-			System.out.println(this.events); //n
+			System.out.println(this.events); 
+		//n+2
 	}
 
 	public static void main(String[] args) {
