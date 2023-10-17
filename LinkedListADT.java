@@ -20,11 +20,11 @@ public class LinkedListADT<T extends Comparable<T>> {
      * @param data The element to be added
      */
     public void add(T data) {
-        Node<T> node = new Node<>(data);//1
-        if (head == null) {//1
-            head = node;//1
-            size++;//1
-            return;//1
+        Node<T> node = new Node<>(data); //2
+        if (head == null) { //1
+            head = node; //1
+            size++; //1
+            return; //1
         }
         Node<T> current = head;//1
         Node<T> previous = null;//1
@@ -33,13 +33,14 @@ public class LinkedListADT<T extends Comparable<T>> {
             current = current.getNext();//n
         }
         if (previous == null) {//1
-            node.setNext(head);//1 //if there is only head in the list the new data will be added before the head
-            head = node;//1
+            node.setNext(head); //2 //if there is only head in the list the new data will be added before the head
+            head = node; //1
         } else {
-            previous.setNext(node);//1 // will add the data before the last
-            node.setNext(current);//1
+            previous.setNext(node); //1 // will add the data before the last
+            node.setNext(current); //1
         }
         size++;//1
+        //3n+14
     }
 
     /**
@@ -63,6 +64,7 @@ public class LinkedListADT<T extends Comparable<T>> {
             previous.setNext(current.getNext());//1
         }
         size--;//1
+        //3n+9
     }
 
     /**
@@ -84,13 +86,14 @@ public class LinkedListADT<T extends Comparable<T>> {
 
         Node<T> current = head;//1
         while (current != null) {//n+1
-            if (criteria.matches(current.getData())) {//n
-                results.add(current.getData());//n
+            if (criteria.matches(current.getData())) {//n*(12)=12n
+                results.add(current.getData());//n(3n+14)=3n²+14n
             }
             current = current.getNext();//n
         }
 
         return results;//1
+        //3n²+28n+4
     }
 
 
@@ -119,6 +122,7 @@ public class LinkedListADT<T extends Comparable<T>> {
         }
         // Convert the StringBuilder to a string and return.
         return builder.toString();//1
+        //4n+4
     }
 
     public interface SearchCriteria<T> {
