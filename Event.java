@@ -36,6 +36,13 @@ public class Event implements Comparable<Event> {
 
     public Event() {
     }
+ public Date getStartTime() {
+        return startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
 
     public Contact getContact() {
         return contact;//1
@@ -45,9 +52,7 @@ public class Event implements Comparable<Event> {
         return title;//1
     }
 
-    public Calendar getDate() {
-        return date;//1
-    }
+    
 
     public String getLocation() {
         return location;//1
