@@ -14,6 +14,7 @@ public class ContactSearchCriteria implements LinkedListADT.SearchCriteria<Conta
         this.type = type;
     }
 
+   
     public boolean matches(Contact contact) {
         switch (type) {
             case 1:  // Name
@@ -26,8 +27,6 @@ public class ContactSearchCriteria implements LinkedListADT.SearchCriteria<Conta
                 return criteria.equalsIgnoreCase(contact.getAddress());
             case 5:  // Birth Date
                 return criteria.equalsIgnoreCase(contact.getBirthDate());
-            case 6:  // First Name 
-                return criteria.equalsIgnoreCase(contact.getFirstName());
             default:
                 return false;
         }
