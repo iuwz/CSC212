@@ -177,51 +177,51 @@ public class PhoneBook {
 	}
 
 	private void scheduleEvent() {
-        Event event = new Event();
-        String contactName = "";
+        Event event = new Event(); //1
+        String contactName = ""; //1
 
-        System.out.print("Enter the event's title: ");
-        event.setTitle(scanner.nextLine());
-        System.out.print("Enter contact's name: ");
-        contactName = scanner.nextLine();
+        System.out.print("Enter the event's title: "); //1
+        event.setTitle(scanner.nextLine()); //1
+        System.out.print("Enter contact's name: "); //1
+        contactName = scanner.nextLine(); //1
         
-        event.setDate(scanner);  // setting both start and end times
+        event.setDate(scanner); //9n+1 // setting both start and end times
 
-        System.out.print("Enter the event's location: ");
-        event.setLocation(scanner.nextLine());
+        System.out.print("Enter the event's location: "); //1
+        event.setLocation(scanner.nextLine()); //1
 
-        ContactSearchCriteria criteria = new ContactSearchCriteria(contactName, 1);
-        LinkedListADT<Contact> results = this.contacts.search(criteria);
+        ContactSearchCriteria criteria = new ContactSearchCriteria(contactName, 1); //1
+        LinkedListADT<Contact> results = this.contacts.search(criteria); //3n²+28n+5
 
-        if (results.isEmpty()) {
-            System.out.println("No contact found");
-        } else if (results.size() > 1) {
-            System.out.println("Multiple contacts found");
+        if (results.isEmpty()) { //1
+            System.out.println("No contact found"); //1
+        } else if (results.size() > 1) { //1
+            System.out.println("Multiple contacts found"); //1
         } else {
-            Node<Contact> node = results.getHead();
+            Node<Contact> node = results.getHead(); //1
 
-            if (this.hasConflict(event)) {
-                System.out.println("This event conflicts with another event for this contact or other contacts");
-                return;
+            if (this.hasConflict(event)) { //2n+4
+                System.out.println("This event conflicts with another event for this contact or other contacts"); //1
+                return; //1
             }
 
-            event.setContact(node.getData());
-            node.getData().addEvent(event);
+            event.setContact(node.getData()); //1
+            node.getData().addEvent(event); //1
 
-            this.events.add(event);
+            this.events.add(event); //3n+14
 
-            System.out.println("Event added successfully!");
+            System.out.println("Event added successfully!"); //1
         }
     }
-    private boolean hasConflict(Event newEvent) {
-        Node<Event> currentEventNode = events.getHead();
-        while (currentEventNode != null) {
-            if (newEvent.isConflicting(currentEventNode.getData())) {
-                return true;
+    private boolean hasConflict(Event newEvent) {  //2n+3
+        Node<Event> currentEventNode = events.getHead(); //1
+        while (currentEventNode != null) { //n
+            if (newEvent.isConflicting(currentEventNode.getData())) { //n
+                return true; //1
             }
-            currentEventNode = currentEventNode.getNext();
+            currentEventNode = currentEventNode.getNext(); //1
         }
-        return false;
+        return false; //1
     }
 
 	private void printEventDetails() {
@@ -233,27 +233,27 @@ public class PhoneBook {
 
 		while (true) { //n
 			try {
-				System.out.print("Enter your choice: "); //1*n
-				choice = Integer.parseInt(scanner.nextLine()); //1*n
-				if (choice < 1 || choice > 2) { //1*n
-					System.err.println("Please enter a number between 1 and 2"); //1*n
+				System.out.print("Enter your choice: "); //n
+				choice = Integer.parseInt(scanner.nextLine()); //n
+				if (choice < 1 || choice > 2) { //n
+					System.err.println("Please enter a number between 1 and 2"); //n
 				} else {
 					break; //1
 				}
 			} catch (NumberFormatException e) {
-				System.err.println("Please enter a number between 1 and 2"); //1
+				System.err.println("Please enter a number between 1 and 2"); //n
 			}
 		}
 
-		String prompt = "";
+		String prompt = ""; //1
 
 		switch (choice) {
 		case 1: //1 //contact name
 			prompt = "Enter the contact's name: "; //1
-			break;
+			break; //1
 		case 2: //1 // event title
 			prompt = "Enter the event's title: "; //1
-			break;
+			break; //1
 		}
 
 		System.out.print(prompt); //1
@@ -262,7 +262,7 @@ public class PhoneBook {
 
 		EventSearchCriteria criteria = new EventSearchCriteria(searchFor, choice); //1
 
-		LinkedListADT<Event> results = this.events.search(criteria); //n²
+		LinkedListADT<Event> results = this.events.search(criteria); //3n²+28n+5
 
 		if (results.isEmpty()) { //1
 			System.out.println("No event found"); //1
@@ -271,7 +271,7 @@ public class PhoneBook {
 			System.out.println(results); //n
 		}
 		System.out.println(); //1 
-		//n²+6n+14
+		// 3n²+35n+19
 	}
 
 	private void printContactsByFirstName() {
@@ -280,7 +280,7 @@ public class PhoneBook {
 		String firstName = scanner.nextLine(); //1
 
 		ContactSearchCriteria criteria = new ContactSearchCriteria(firstName, 6); //1  // 6 corresponds to FIRST_NAME
-		LinkedListADT<Contact> results = this.contacts.search(criteria); //n²
+		LinkedListADT<Contact> results = this.contacts.search(criteria); //3n²+28n+5
 
 		if (results.isEmpty()) { //1
 			System.out.println("No contact found"); //1
@@ -289,20 +289,20 @@ public class PhoneBook {
 			System.out.println(results); //n
 		}
 		System.out.println();//1
-		//n²+n+7
+		//3n²+29n+9
 	}
 
 	private void printAllEventsAlphabetically() {  // it is already sorted alphabetically in add method in linked list
 		if(this.events.isEmpty())  //1
 			System.out.println("There are no events scheduled"); //1
 		else
-			System.out.println(this.events); 
-		//n+2
+			System.out.println(this.events); //n
+		//n+1
 	}
 
 	public static void main(String[] args) {
-		PhoneBook phoneBook = new PhoneBook(); //1
-		System.out.println("Welcome to the Linked Tree Phonebook!"); //1
+		PhoneBook phoneBook = new PhoneBook(); 
+		System.out.println("Welcome to the Linked Tree Phonebook!"); 
 		int choice;
 		do {
 			choice = phoneBook.mainMenu(); //O(n)
